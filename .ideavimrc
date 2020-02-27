@@ -1,0 +1,181 @@
+myt"把console移动到编辑区
+”debug force on start up
+set showmatch
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set history=3000000
+set commentary
+
+nmap <C-j> <C-e>
+nmap <C-k> <C-y>
+nmap <C-h> 10zh
+nmap <C-l> 10zl
+vmap <C-j> <C-e>
+vmap <C-k> <C-y>
+vmap <C-h> 10zh
+vmap <C-l> 10zl
+imap <C-j> <Esc><C-e>a
+imap <C-k> <Esc><C-y>a
+imap <C-h> <Esc>10zhi
+imap <C-l> <Esc>l10zla
+
+
+nnoremap zH 50zh
+nnoremap zL 50zl
+
+noremap <Space>sw :action SurroundWith<CR>
+noremap <Space>= :action ReformatCode<CR>
+noremap <Space>spm :action ShowPopupMenu<CR>
+noremap <Space>fc :action ForceRunToCursor<CR>
+noremap <Space>gi :action GotoImplementation<CR>
+noremap <Space>bp :action ToggleLineBreakpoint<CR>
+noremap <Space>fip :action FindInPath<CR>
+noremap <Space>{ :action EditorCodeBlockStart<CR>
+noremap <Space>} :action EditorCodeBlockEnd<CR>
+
+"切换为演示模式,沉浸式体验
+noremap <Space>tpm :action TogglePresentationMode<CR>
+
+"方法结构
+noremap <Space>mh :action MethodHierarchy<CR>
+
+"隐藏所有窗口
+noremap <Space>ha :action HideAllWindows<CR>
+noremap <Space><Space> :action HideAllWindows<CR>
+
+"弹出文件结构
+noremap <Space>fs :action FileStructurePopup<CR>
+
+"保存模板
+noremap <Space>st :action SaveAsTemplate<CR>
+
+"弹出警告信息
+noremap <Space>ed :action ShowErrorDescription<CR>
+"弹出类型信息
+noremap <Space>ti :action ExpressionTypeInfo<CR>
+"弹出参数信息
+noremap <Space>pi :action ParameterInfo<CR>
+
+"修改变量或方法名
+noremap <Space>re :action RenameElement<CR>
+
+"成员变静态
+noremap <Space>ms :action MakeStatic<CR>
+"静态变成员
+noremap <Space>ci :action ConvertToInstanceMethod<CR>
+
+"移动
+noremap <Space>mv :action Move<CR>
+
+"内联
+noremap <Space>il :action Inline<CR>
+
+"抽取接口
+noremap <Space>ei :action ExtractInterface<CR>
+
+"抽取方法
+noremap <Space>em :action ExtractMethod<CR>
+
+"字段的访问限制
+noremap <Space>ef :action EncapsulateFields<CR>
+"切换方法为方法对象
+noremap <Space>rmo :action ReplaceMethodWithMethodObject<CR>
+
+"引入临时变量
+noremap <Space>iv :action IntroduceVariable<CR>
+"引入常量
+noremap <Space>ic :action IntroduceConstant<CR>
+"引入方法参数
+noremap <Space>ip :action IntroduceParameter<CR>
+"引入字段
+noremap <Space>if :action IntroduceField<CR>
+"引入参数对象(指定参数)
+noremap <Space>po :action IntroduceParameterObject<CR>
+
+"方法下放到子类
+noremap <Space>pd :action MemberPushDown<CR>
+"方法上移到父类
+noremap <Space>pu :action MembersPullUp<CR>
+
+"添加新的观察
+noremap <Space>daw :action Debugger.AddToWatch<CR>
+
+"重复上次debug
+noremap <Space>dd :action Debug<CR>
+
+"debug当前(now)类
+noremap <Space>dn :action DebugClass<CR>
+
+"运行上个类
+noremap <Space>rr :action Run<CR>
+
+
+"运行当前类
+noremap <Space>rn :action RunClass<CR>
+
+"统计运行当前类
+noremap <Space>cn :action RunCoverage<CR>
+
+"统计运行上个类
+noremap <Space>cc :action Coverage<CR>
+
+"跑到下个报错处
+noremap <Space>ne :action GotoNextError<CR>
+
+"跑到上个报错处
+noremap <Space>pe :action GotoPreviousError<CR>
+
+"优化导入
+noremap <Space>oi :action OptimizeImports<CR>
+
+"快速显示文档
+noremap <Space>jd :action QuickJavaDoc<CR>
+
+"从子类方法跳到父类的方法
+noremap <Space>gs :action GotoSuperMethod<CR>
+
+"qq translate
+noremap <Space>qq :action com.cqq.action.QuicklyTranslateAction<CR>
+
+"windows hide
+nnoremap <Space>wh :action HideActiveWindow<CR>
+
+"windows debug
+nnoremap <Space>wd :action ActivateDebugToolWindow<CR>
+
+"windows run
+nnoremap <Space>wr :action ActivateRunToolWindow<CR>
+
+"windows max 
+nnoremap <Space>mm :action MaximizeToolWindow<CR>
+
+"to symbol
+nnoremap <Space>ts :action GotoSymbol<CR>
+"to action
+nnoremap <Space>ta :action GotoAction<CR>
+"to file 
+noremap <Space>tf :action GotoFile<CR>
+"to test file
+noremap <Space>tt :action GotoTest<CR>
+
+"to class file
+noremap <Space>tc :action GotoClass<CR>
+
+nnoremap <Space>cv :action ChangeView<CR>
+
+"run config
+nnoremap <Space>rc :action RunConfiguration<CR>
+
+"debug good tool
+noremap <Space>qe :action QuickEvaluateExpression <CR> 
+
+noremap <Space>ee :action EvaluateExpression <CR> 
+
+
+noremap <Space>fr :action Debugger.ForceEarlyReturn<CR>
+noremap <Space>ag :action antlr.Generate<CR>:action antlr.Generate<CR>
+noremap <Space>co :action CloseAllEditorsButActive<CR>
+:set vb
+
