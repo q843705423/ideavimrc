@@ -175,7 +175,8 @@ noremap <Space>ee :action EvaluateExpression <CR>
 
 
 noremap <Space>fr :action Debugger.ForceEarlyReturn<CR>
-noremap <Space>ag :action antlr.Generate<CR>:action antlr.Generate<CR>
 noremap <Space>co :action CloseAllEditorsButActive<CR>
+noremap <Space>ag :action antlr.Generate<CR>:action antlr.Generate<CR>
+
 :set vb
 
