@@ -1,5 +1,4 @@
-myt"把console移动到编辑区
-”debug force on start up
+""""""""""""""""""""""""""""""""""""""Configuration""""""""""""""""""""""""""""""""""""""
 set showmatch
 set hlsearch
 set incsearch
@@ -7,176 +6,171 @@ set ignorecase
 set smartcase
 set history=3000000
 set commentary
+:set vb
+:set keep-english-in-normal
 
-nmap <C-j> <C-e>
-nmap <C-k> <C-y>
-nmap <C-h> 10zh
-nmap <C-l> 10zl
+""""""""""""""""""""""""""""""""""""""Basics""""""""""""""""""""""""""""""""""""""
+"debug Artifact
+nmap <C-j> :action StepOver<CR>
+nmap <C-k> :action Resume<CR>
+nmap <C-h> :action StepOut<CR>
+nmap <C-l> :action ForceStepInto<CR>
+"Mobile specialization
 vmap <C-j> <C-e>
 vmap <C-k> <C-y>
 vmap <C-h> 10zh
 vmap <C-l> 10zl
-imap <C-j> <Esc><C-e>a
-imap <C-k> <Esc><C-y>a
-imap <C-h> <Esc>10zhi
-imap <C-l> <Esc>l10zla
-
-
+imap <C-j> <Down>
+imap <C-k> <Up>
+imap <C-h> <Left>
+imap <C-l> <Right>
+imap <C-i> <CR>
+"Left and right vision
 nnoremap zH 50zh
 nnoremap zL 50zl
-
-noremap <Space>sw :action SurroundWith<CR>
-noremap <Space>= :action ReformatCode<CR>
-noremap <Space>spm :action ShowPopupMenu<CR>
-noremap <Space>fc :action ForceRunToCursor<CR>
-noremap <Space>gi :action GotoImplementation<CR>
+"^$ The symbol is too hard to press
+map gh ^
+map gl $
+""""""""""""""""""""""""""""""""""""""Refactoring""""""""""""""""""""""""""""""""""""""
+noremap <Space>re :action RenameElement<CR>
+noremap <Space>mv :action Move<CR>
+noremap <Space>ms :action MakeStatic<CR>
+noremap <Space>ci :action ConvertToInstanceMethod<CR>
+noremap <Space>il :action Inline<CR>
+noremap <Space>em :action ExtractMethod<CR>
+noremap <Space>ei :action ExtractInterface<CR>
+noremap <Space>ef :action EncapsulateFields<CR>
+noremap <Space>rmo :action ReplaceMethodWithMethodObject<CR>
+noremap <Space>iv :action IntroduceVariable<CR>
+noremap <Space>ic :action IntroduceConstant<CR>
+noremap <Space>ip :action IntroduceParameter<CR>
+noremap <Space>if :action IntroduceField<CR>
+noremap <Space>po :action IntroduceParameterObject<CR>
+noremap <Space>pd :action MemberPushDown<CR>
+noremap <Space>pu :action MembersPullUp<CR>
+noremap <Space>RF :action RenameFile<CR>
+noremap <Space>cs  :action ChangeSignature<CR>
+noremap <Space>ai :action AnonymousToInner<CR>
+""""""""""""""""""""""""""""""""""""""Jump articles""""""""""""""""""""""""""""""""""""""
+noremap <Space>te :action SearchEverywhere<CR>
+nnoremap <Space>ts mm`m:action GotoSymbol<CR>
+noremap  <Space>tu  mm`m:action Toolkit.GotoService<CR>
+nnoremap <Space>ta mm`m:action GotoAction<CR>
+noremap <Space>tf mm`m:action GotoFile<CR>
+noremap <Space>tt mm`m:action GotoTest<CR>
+noremap <Space>tc mm`m:action GotoClass<CR>
+noremap <Space>tp mm`m:action FindInPath<CR>
+noremap <Space>ne mm`m:action GotoNextError<CR>
+noremap <Space>pe mm`m:action GotoPreviousError<CR>
+noremap <Space>gs mm`m:action GotoSuperMethod<CR>
+noremap <Space>gi mm`m:action GotoImplementation<CR>
+noremap <Space>g, mm`m:action JumpToLastChange<CR>
+noremap <Space>g; mm`m:action JumpToNextChange<CR>
+noremap <Space>rf :action RecentFiles<CR>
+noremap <Space>rF :action RecentChangedFiles<CR>
+noremap <Space>nw :action NextProjectWindow<CR>
+noremap <Space>pw :action PreviousProjectWindow<CR>
+""""""""""""""""""""""""""""""""""""""SQL""""""""""""""""""""""""""""""""""""""
+noremap <Space>sc :action Console.Transaction.Commit<CR>
+noremap <Space>sr :action Console.Transaction.Rollback<CR>
+noremap <Space>se :action Console.Jdbc.Execute<CR>
+"Open the database log window, provided the MyBatis Log Plugin is installed
+noremap <Space>AL :action TailMyBatisLog0<CR>:action ActivateMyBatisLogToolWindow<CR>
+""""""""""""""""""""""""""""""""""""""Run""""""""""""""""""""""""""""""""""""""
+nnoremap <Space>rc :action RunConfiguration<CR>
+noremap <Space>rr :action Run<CR>
+noremap <Space>rn :action RunClass<CR>
+noremap <Space>dd :action Debug<CR>
+noremap <Space>dn :action DebugClass<CR>
+noremap <Space>cc :action Coverage<CR>
+noremap <Space>cn :action RunCoverage<CR>
+noremap <Space>sp   :action Stop<CR>
+""""""""""""""""""""""""""""""""""""""Debug""""""""""""""""""""""""""""""""""""""
 noremap <Space>bp :action ToggleLineBreakpoint<CR>
-noremap <Space>fip :action FindInPath<CR>
-noremap <Space>{ :action EditorCodeBlockStart<CR>
-noremap <Space>} :action EditorCodeBlockEnd<CR>
+noremap <Space>qe :action QuickEvaluateExpression <CR>
+noremap <Space>ee :action EvaluateExpression <CR>
+noremap <Space>fr :action Debugger.ForceEarlyReturn<CR>
+noremap <Space>daw :action Debugger.AddToWatch<CR>
+noremap <Space>fc :action ForceRunToCursor<CR>
+noremap <Space>hs :action Hotswap<CR>
+noremap <Space>DD :action JRebel Debug<CR>
+noremap <Space>rab :action Debugger.RemoveAllBreakpointsInFile<CR>
+noremap <Space>raB :action Debugger.RemoveAllBreakpoints<CR>
+noremap <Space>df :action Debugger.PopFrame<CR>
+noremap <Space>pp :action ShowExecutionPoint<CR>
+noremap <Space>ds :action StreamTracerAction<CR>
+noremap <Space>mb :action XDebugger.MuteBreakpoints<CR>
 
-"切换为演示模式,沉浸式体验
-noremap <Space>tpm :action TogglePresentationMode<CR>
 
-"方法结构
-noremap <Space>mh :action MethodHierarchy<CR>
-
-"隐藏所有窗口
+""""""""""""""""""""""""""""""""""""""Window""""""""""""""""""""""""""""""""""""""
+noremap <Space>AM  :action ActivateMavenToolWindow<CR>
+noremap <Space>AD  :action ActivateDatabaseToolWindow<CR>
+noremap <Space>AT   :action ActivateTODOToolWindow<CR>
+noremap <Space>AF :action ActivateFavoritesToolWindow<CR>
+noremap <Space>AP :action ActivateProjectToolWindow<CR>
+noremap <Space>AG :action ActivateVersionControlToolWindow<CR>
+noremap <Space>AS :action ActivateServicesToolWindow<CR>
+noremap <Space>AB :action ViewBreakpoints<CR>
+noremap <Space>AR :action ActivateRestServicesToolWindow<CR>
+nnoremap <Space>wd :action ActivateDebugToolWindow<CR>
+nnoremap <Space>wr :action ActivateRunToolWindow<CR>
+nnoremap <Space>wh :action HideActiveWindow<CR>
+nnoremap <Space>mm :action MaximizeToolWindow<CR>
 noremap <Space>ha :action HideAllWindows<CR>
 noremap <Space><Space> :action HideAllWindows<CR>
+noremap <Space>si :action SelectInProjectView<CR>
+noremap <Space>eb :action EditBreakpoint<CR>
 
-"弹出文件结构
-noremap <Space>fs :action FileStructurePopup<CR>
-
-"保存模板
-noremap <Space>st :action SaveAsTemplate<CR>
-
-"弹出警告信息
+""""""""""""""""""""""""""""""""""""""Information""""""""""""""""""""""""""""""""""""""
 noremap <Space>ed :action ShowErrorDescription<CR>
-"弹出类型信息
 noremap <Space>ti :action ExpressionTypeInfo<CR>
-"弹出参数信息
 noremap <Space>pi :action ParameterInfo<CR>
-
-"修改变量或方法名
-noremap <Space>re :action RenameElement<CR>
-
-"成员变静态
-noremap <Space>ms :action MakeStatic<CR>
-"静态变成员
-noremap <Space>ci :action ConvertToInstanceMethod<CR>
-
-"移动
-noremap <Space>mv :action Move<CR>
-
-"内联
-noremap <Space>il :action Inline<CR>
-
-"抽取接口
-noremap <Space>ei :action ExtractInterface<CR>
-
-"抽取方法
-noremap <Space>em :action ExtractMethod<CR>
-
-"字段的访问限制
-noremap <Space>ef :action EncapsulateFields<CR>
-"切换方法为方法对象
-noremap <Space>rmo :action ReplaceMethodWithMethodObject<CR>
-
-"引入临时变量
-noremap <Space>iv :action IntroduceVariable<CR>
-"引入常量
-noremap <Space>ic :action IntroduceConstant<CR>
-"引入方法参数
-noremap <Space>ip :action IntroduceParameter<CR>
-"引入字段
-noremap <Space>if :action IntroduceField<CR>
-"引入参数对象(指定参数)
-noremap <Space>po :action IntroduceParameterObject<CR>
-
-"方法下放到子类
-noremap <Space>pd :action MemberPushDown<CR>
-"方法上移到父类
-noremap <Space>pu :action MembersPullUp<CR>
-
-"添加新的观察
-noremap <Space>daw :action Debugger.AddToWatch<CR>
-
-"重复上次debug
-noremap <Space>dd :action Debug<CR>
-
-"debug当前(now)类
-noremap <Space>dn :action DebugClass<CR>
-
-"运行上个类
-noremap <Space>rr :action Run<CR>
-
-
-"运行当前类
-noremap <Space>rn :action RunClass<CR>
-
-"统计运行当前类
-noremap <Space>cn :action RunCoverage<CR>
-
-"统计运行上个类
-noremap <Space>cc :action Coverage<CR>
-
-"跑到下个报错处
-noremap <Space>ne :action GotoNextError<CR>
-
-"跑到上个报错处
-noremap <Space>pe :action GotoPreviousError<CR>
-
-"优化导入
-noremap <Space>oi :action OptimizeImports<CR>
-
-"快速显示文档
 noremap <Space>jd :action QuickJavaDoc<CR>
-
-"从子类方法跳到父类的方法
-noremap <Space>gs :action GotoSuperMethod<CR>
-
-"qq translate
-noremap <Space>qq :action com.cqq.action.QuicklyTranslateAction<CR>
-
-"windows hide
-nnoremap <Space>wh :action HideActiveWindow<CR>
-
-"windows debug
-nnoremap <Space>wd :action ActivateDebugToolWindow<CR>
-
-"windows run
-nnoremap <Space>wr :action ActivateRunToolWindow<CR>
-
-"windows max 
-nnoremap <Space>mm :action MaximizeToolWindow<CR>
-
-"to symbol
-nnoremap <Space>ts :action GotoSymbol<CR>
-"to action
-nnoremap <Space>ta :action GotoAction<CR>
-"to file 
-noremap <Space>tf :action GotoFile<CR>
-"to test file
-noremap <Space>tt :action GotoTest<CR>
-
-"to class file
-noremap <Space>tc :action GotoClass<CR>
-
+noremap <Space>fs mm`m:action FileStructurePopup<CR>
+noremap <Space>sd  :action ShowUmlDiagram<CR>
+noremap <Space>ch :action CallHierarchy<CR>
+nnoremap <Space>fu :action FindUsages<CR>
+nnoremap <Space>su :action ShowUsages<CR>
+noremap <Space>mh :action MethodHierarchy<CR>
+noremap <Space>ss  :action ShowSettings<CR>
+noremap <Space>ps :action ShowProjectStructureSettings<CR>
+""""""""""""""""""""""""""""""""""""""Project""""""""""""""""""""""""""""""""""""""
+noremap <Space>cP :action CloseProject<CR>
+noremap <Space>CP :action CloseProject<CR>
+noremap <Space>oP :action OpenFile<CR>
+noremap <Space>OP :action OpenFile<CR>
+noremap <Space>nP :action NewProject<CR>
+noremap <Space>NP :action NewProject<CR>
+""""""""""""""""""""""""""""""""""""""Utilities""""""""""""""""""""""""""""""""
+noremap <Space>sw :action SurroundWith<CR>
+noremap <Space>= :action ReformatCode<CR>
+noremap <Space>sm :action ShowPopupMenu<CR>
+noremap <Space>st :action SaveAsTemplate<CR>
+noremap <Space>cap   :action CopyAbsolutePath<CR>
+noremap <Space>ccp   :action CopyContentRootPath<CR>
+noremap <Space>oi :action OptimizeImports<CR>
 nnoremap <Space>cv :action ChangeView<CR>
-
-"run config
-nnoremap <Space>rc :action RunConfiguration<CR>
-
-"debug good tool
-noremap <Space>qe :action QuickEvaluateExpression <CR> 
-
-noremap <Space>ee :action EvaluateExpression <CR> 
-
-
-noremap <Space>fr :action Debugger.ForceEarlyReturn<CR>
 noremap <Space>co :action CloseAllEditorsButActive<CR>
 noremap <Space>ag :action antlr.Generate<CR>:action antlr.Generate<CR>
+noremap <Space>bc   :action ByteCodeViewer<CR>
+noremap <Space>qq   :action $TranslateTextComponent<CR>
+noremap <Space>tr :action $TranslateAndReplaceAction<CR>
+noremap <Space>gfu :action GenerateFullRestUrl<CR>
+noremap <Space>atf :action AddToFavorites<CR>
+noremap <Space>cE :action CopyElement<CR>
+noremap <Space>nE :action NewElement<CR>
+noremap <Space>dE :action SafeDelete<CR>
+nnoremap <Space>cp :action CheckinProject<CR>
+nnoremap <CR><CR> :action ShowIntentionActions<CR>
+nnoremap <Space><CR> :action GotoNextError<CR>
+noremap <Space>nc :action NewClass<CR>
+noremap <Space>ps :action ShowProjectStructureSettings<CR>
+noremap <Space>ri :action RevealIn<CR>
+noremap <Space>ga :action Generate<CR>
+noremap <Space>cu :action CloseAllUnmodifiedEditors<CR>
+noremap <Space>oc :action OpenCodotaSearch<CR>
+noremap <Space>AC :action ActivateCodotaToolWindow<CR>
+"Codota activation window, Codota plug-in needs to be installed in advance
+noremap <Space>cl :action CodotaLeanSearchCrossRefAction<CR>
 
-:set vb
 
