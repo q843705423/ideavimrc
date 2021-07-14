@@ -1,4 +1,5 @@
 """"""""""""""""""""""""""""""""""""""Configuration""""""""""""""""""""""""""""""""""""""
+
 set showmatch
 
 set hlsearch
@@ -18,6 +19,7 @@ set commentary
 :set keep-english-in-normal
 
 """"""""""""""""""""""""""""""""""""""Basics""""""""""""""""""""""""""""""""""""""
+
 "debug Artifact
 
 nmap <C-j> :action StepOver<CR>
